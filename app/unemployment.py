@@ -26,8 +26,6 @@ parsed_response = json.loads(response.text)
 # Display the unemployment rate using a percent sign.
 
 data = parsed_response["data"]
-print(type(data))
-print(data[0])
 print()
 print("CURRENT UNEMPLOYMENT RATE:")
 print(data[0]["value"]+ "%")
@@ -46,7 +44,7 @@ for day in unemploymentData['data']:
     dates.append(day['date'])
     values.append(float(day['value']))
     
-print("AVERAGE UNEMPLOYMENT RATE:", statistics.mean(values))
+print("AVERAGE UNEMPLOYMENT RATE:", round(statistics.mean(values),2))
 print("Number of months:",len(dates))
 print()
 
