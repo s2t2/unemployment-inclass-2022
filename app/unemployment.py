@@ -1,6 +1,5 @@
 
 # this is the "app/unemployment_report.py" file...
-
 import os
 import json
 from pprint import pprint
@@ -9,7 +8,7 @@ import requests
 from dotenv import load_dotenv
 
 load_dotenv()
-
+#API_KEY="demo"
 API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
 
 request_url = f"https://www.alphavantage.co/query?function=UNEMPLOYMENT&apikey={API_KEY}"
@@ -17,7 +16,7 @@ request_url = f"https://www.alphavantage.co/query?function=UNEMPLOYMENT&apikey={
 response = requests.get(request_url)
 
 parsed_response = json.loads(response.text)
-#print(type(parsed_response))
+print(type(parsed_response))
 #pprint(parsed_response)
 
 # Challenge A
@@ -27,5 +26,7 @@ parsed_response = json.loads(response.text)
 
 #breakpoint()
 
-latest = parsed_response["data"][0]
+latest = parsed_response["data"][0:5]
 print(latest)
+
+
