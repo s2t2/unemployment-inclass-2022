@@ -8,3 +8,5 @@ pandas
 requests
 
 plotly
+
+statistics
