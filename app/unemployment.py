@@ -1,16 +1,14 @@
 
 # this is the "app/unemployment_report.py" file...
 
-import os
 import json
 from pprint import pprint
-
+from statistics import mean
+from plotly.express import line
 import requests
-from dotenv import load_dotenv
 
-load_dotenv()
+from app.alpha import API_KEY 
 
-API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
 
 request_url = f"https://www.alphavantage.co/query?function=UNEMPLOYMENT&apikey={API_KEY}"
 
@@ -37,7 +35,6 @@ pprint(parsed_response)
 # What is the average unemployment rate for all months during this calendar year?
 # ... How many months does this cover?
 
-from statistics import mean
 
 data = parsed_response["data"]
 this_year = [d for d in data if "2022-" in d["date"]]
@@ -54,7 +51,7 @@ breakpoint()
 # 
 # Plot a line chart of unemployment rates over time.
 
-from plotly.express import line
+
 
 dates = [d["date"] for d in data]
 rates = [float(d["value"]) for d in data]
