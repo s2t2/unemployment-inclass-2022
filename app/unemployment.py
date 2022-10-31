@@ -29,3 +29,7 @@ parsed_response = json.loads(response.text)
 
 latest = parsed_response["data"][0]
 print(latest)
+
+
+
+API_KEY = "demo"
