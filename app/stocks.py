@@ -1,33 +1,46 @@
-# this is the "app/stocks.py" file...
-from app.alpha import API_KEY
-print("STOCKS REPORT...")
-
-
 from pandas import read_csv
 
-symbol = input("Please input a crypto symbol (default: 'NFLX'): ") or "NFLX"
-print("SYMBOL:", symbol)
+from app.alpha import API_KEY
 
-request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={API_KEY}&datatype=csv"
+def format_usd(my_price):
+    return f"${my_price:,.2f}"
 
-df = read_csv(request_url)
-print(df.columns)
-print(df.head())
-#breakpoint()
+def fetch_stocks_data(symbol):
+    request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={API_KEY}&datatype=csv"
 
-# CHALLENGE A:
-# print the latest closing date and price
+    df = read_csv(request_url)
 
-latest = df.iloc[0]
+    return df
 
-#print(latest["timestamp"])
-#print(latest["close"])
-print("LATEST:", '${:,.2f}'.format(latest["adjusted_close"]), "as of", latest["timestamp"])
+if __name__ == "__main__":
 
-# Challenge B
-#
-# What is the highest high price (formatted as USD)?
-# What is the lowest low price (formatted as USD)?
+    print("STOCKS REPORT...")
 
-print("HIGH:", '${:,.2f}'.format(df["high"].max()))
-print("LOW:", '${:,.2f}'.format(df["low"].min()))
+    symbol = input("Please input a crypto symbol (default: 'NFLX'): ") or "NFLX"
+    print("SYMBOL:", symbol)
+    fetch_stocks_data(symbol)
+
+    request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={API_KEY}&datatype=csv"
+
+    df = read_csv(request_url)
+    print(df.columns)
+    print(df.head())
+    #breakpoint()
+
+    # CHALLENGE A:
+    # print the latest closing date and price
+
+    latest = df.iloc[0]
+
+    #print(latest["timestamp"])
+    #print(latest["close"])
+    print("LATEST:", format_usd(latest["adjusted_close"]), "as of", latest["timestamp"])
+
+    # Challenge B
+    #
+    # What is the highest high price (formatted as USD)?
+    # What is the lowest low price (formatted as USD)?
+
+    print("HIGH:", format_usd(df["high"].max()))
+    print("LOW:", format_usd(df["low"].min()))
+

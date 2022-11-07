@@ -8,6 +8,7 @@ import requests
 import plotly.express as px
 from app.alpha import API_KEY
 
+
 request_url = f"https://www.alphavantage.co/query?function=UNEMPLOYMENT&apikey={API_KEY}"
 
 response = requests.get(request_url)
