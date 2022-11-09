@@ -71,12 +71,6 @@ Run the email service to send an example email and see if everything is working:
 python -m app.email_service
 ```
 
-Send the stocks report via email:
-
-```sh
-python -m app.stocks_email.py
-```
-
 Send the unemployment report via email:
 
 ```sh

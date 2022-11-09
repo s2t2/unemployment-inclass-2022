@@ -34,10 +34,10 @@ def send_email(subject="[Daily Briefing] This is a test", html="<p>Hello World</
 
 
 if __name__ == "__main__":
-    example_subject = "[Daily Briefing] This is a test"
+    example_subject = "[Unemployment Report] This is a test"
 
     example_html = f"""
-    <h3>This is a test of the Daily Briefing Service</h3>
+    <h3>This is a test of the Unemployment Email Report</h3>
 
     <h4>Today's Date</h4>
     <p>Monday, January 1, 2040</p>
@@ -59,4 +59,4 @@ if __name__ == "__main__":
     </ul>
     """
 
-    send_email(example_subject, example_html)
+    send_email(subject=example_subject, html=example_html)
