@@ -47,21 +47,15 @@ python app/my_script.py
 Run the unemployment report:
 
 ```sh
-#python app/unemployment.py
-
-# or pass env var from command line:
-#ALPHAVANTAGE_API_KEY="______" python app/unemployment.py
-
 python -m app.unemployment
 ```
 
 Run stocks report:
 
 ```sh
-#python app/stocks.py
-
 python -m app.stocks
 ```
+
 
 ### Email Sending
 
@@ -74,9 +68,17 @@ python -m app.email_service
 Send the unemployment report via email:
 
 ```sh
-python -m app.unemployment_email.py
+python -m app.unemployment_email
 ```
 
+Send the stocks report via email:
+
+```sh
+python -m app.stocks_email
+
+# or in production mode:
+APP_ENV="production" DEFAULT_SYMBOL="GOOGL" python -m app.stocks_email
+```
 
 ## Testing
 

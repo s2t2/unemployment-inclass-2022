@@ -21,4 +21,4 @@ if __name__ == "__main__":
         <p>As of: {data[0]['date']} </p>
     """
 
-    send_email(subject="[Unemployment Report] Your Report", html=html_content)
+    send_email(subject="[Daily Briefing] Unemployment Report", html=html_content)
