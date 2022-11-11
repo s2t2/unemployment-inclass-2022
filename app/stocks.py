@@ -18,11 +18,11 @@ if __name__ == "__main__":
 
     symbol = input("Please input a crypto symbol (default: 'NFLX'): ") or "NFLX"
     print("SYMBOL:", symbol)
-    fetch_stocks_data(symbol)
+    
 
-    request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={API_KEY}&datatype=csv"
+    #request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={API_KEY}&datatype=csv"
 
-    df = read_csv(request_url)
+    df = fetch_stocks_data(symbol)
     print(df.columns)
     print(df.head())
     #breakpoint()

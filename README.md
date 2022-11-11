@@ -51,3 +51,4 @@ ALPHAVANTAGE_API_KEY="______" python app/unemployment.py
 
 
 run tests:
+pytest

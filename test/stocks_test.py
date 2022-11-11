@@ -24,3 +24,7 @@ def test_data_fetching():
     assert "low" in result.columns
 
     assert len(result) >= 100
+
+def test_invalids():
+    data = fetch_stocks_data("NKDSAFLJ")
+    assert "Error Message" in data
