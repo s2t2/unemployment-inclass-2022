@@ -27,8 +27,11 @@ def stocks_dashboard():
         data = df.to_dict("records")
 
         #flash("Fetched Real-time Market Data!", "success")
-        return render_template("stocks_dashboard.html", symbol=symbol,
-            latest_close_usd=latest_close_usd, latest_date=latest_date, data=data
+        return render_template("stocks_dashboard.html",
+            symbol=symbol,
+            latest_close_usd=latest_close_usd,
+            latest_date=latest_date,
+            data=data
         )
     except Exception as err:
         print('OOPS', err)
