@@ -25,11 +25,7 @@ def fetch_unemployment_data():
     response = requests.get(request_url)
 
     parsed_response = json.loads(response.text)
-    #print(type(parsed_response))
-    #pprint(parsed_response)
 
-    # TODO: consider converting string rates to floats before returning the data
-    # TODO: consider creating and returning a pandas DataFrame, if you like that kind of thing
     return parsed_response["data"]
 
 

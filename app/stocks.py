@@ -8,9 +8,9 @@ def format_usd(my_price):
 def fetch_stocks_data(symbol):
     request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={API_KEY}&datatype=csv"
 
-    df = read_csv(request_url)
+    returned_df = read_csv(request_url)
 
-    return df
+    return returned_df
 
 if __name__ == "__main__":
 
