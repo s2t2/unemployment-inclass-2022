@@ -10,6 +10,7 @@ def test_percent_sign_formatting():
 def test_fetch_data():
     # this function will return a list of datapoints
     output = fetch_unemployment_data()
+    print("TYPE:",type(output))
     assert isinstance(output, list)
 
     # Challenge A seems to take the first item and print its value and date keys
