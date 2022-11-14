@@ -1,6 +1,5 @@
 # would need to include the rest of the game, this is in a separate file.
 
-import app.game
 from app.game import determine_winner
 
 
