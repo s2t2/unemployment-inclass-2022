@@ -26,43 +26,43 @@ def fetch_unemployment_data():
 
     parsed_response = json.loads(response.text)
 
-    return parsed_response
+    return parsed_response["data"]
 
 
+if __name__ == "__main__":
+    # Challenge A
+    #
+    # What is the most recent unemployment rate? And the corresponding date?
+    # Display the unemployment rate using a percent sign.
 
-# Challenge A
-#
-# What is the most recent unemployment rate? And the corresponding date?
-# Display the unemployment rate using a percent sign.
+    data = fetch_unemployment_data()
+    print()
+    print("CURRENT UNEMPLOYMENT RATE:")
+    print(data[0]["value"]+ "%", "as of", data[0]["date"])
 
-data = fetch_unemployment_data()
-print()
-print("CURRENT UNEMPLOYMENT RATE:")
-print(data[0]["value"]+ "%", "as of", data[0]["date"])
-
-# Challenge B
-# 
-# What is the average unemployment rate for all months during this calendar year?
-# ... How many months does this cover?
+    # Challenge B
+        # 
+    # What is the average unemployment rate for all months during this calendar year?
+    # ... How many months does this cover?
 
  
-print()
+    print()
 
-this_year = [d for d in data if "2022-" in d["date"]]
-currentRates = [float(d["value"]) for d in this_year]
+    this_year = [d for d in data if "2022-" in d["date"]]
+    currentRates = [float(d["value"]) for d in this_year]
     
-print("AVERAGE UNEMPLOYMENT THIS YEAR:", format_pct(statistics.mean(currentRates)))
-print("Number of months:",len(this_year))
-print()
+    print("AVERAGE UNEMPLOYMENT THIS YEAR:", format_pct(statistics.mean(currentRates)))
+    print("Number of months:",len(this_year))
+    print()
 
-# Challenge C
-# 
-# Plot a line chart of unemployment rates over time.
+    # Challenge C
+    # 
+    # Plot a line chart of unemployment rates over time.
 
-dates = [d["date"] for d in data]
-values = [float(d["value"]) for d in data]
-print("LOADING CHART OF UNEMPLOYMENT OVER TIME...")
-print()
-fig = px.line(x=dates, y=values)
-fig.update_layout(title="Unemployment Over Time",yaxis_title=f"Unemployment",xaxis_title="Date",yaxis_ticksuffix='%')
-fig.show()
+    dates = [d["date"] for d in data]
+    values = [float(d["value"]) for d in data]
+    print("LOADING CHART OF UNEMPLOYMENT OVER TIME...")
+    print()
+    fig = px.line(x=dates, y=values)
+    fig.update_layout(title="Unemployment Over Time",yaxis_title=f"Unemployment",xaxis_title="Date",yaxis_ticksuffix='%')
+    fig.show()
