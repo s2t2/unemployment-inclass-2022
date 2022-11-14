@@ -30,4 +30,6 @@ def test_data_fetching():
 
 def test_invalids():
     data = fetch_stocks_data("NKDSAFLJ")
-    assert "Error Message" in data
+    data_json = data.to_json() 
+    print(data_json)
+    assert "Invalid API call" in data_json
