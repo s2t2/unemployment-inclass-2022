@@ -26,7 +26,7 @@ def fetch_unemployment_data():
 
     parsed_response = json.loads(response.text)
 
-    return parsed_response["data"]
+    return parsed_response
 
 
 
