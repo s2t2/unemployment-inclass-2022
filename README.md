@@ -64,3 +64,10 @@ python -m app.stocks
 # or pass env var from command line:
 ALPHAVANTAGE_API_KEY="______" python app/unemployment.py
 ```
+##Testing 
+
+Run Tests: 
+
+```sh
+pytest
+```
