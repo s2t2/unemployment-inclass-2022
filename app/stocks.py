@@ -14,8 +14,8 @@ def fetch_stocks_data(symbol):
 
     df = read_csv(request_url)
 
-    if "timestamp" not in df.columns:
-        breakpoint()
+    #if "timestamp" not in df.columns:
+    #    return None
 
     return df
 
