@@ -11,13 +11,19 @@ def stocks_form():
     print("STOCKS FORM...")
     return render_template("stocks_form.html")
 
-@stocks_routes.route("/stocks/dashboard", methods=["POST"])
+@stocks_routes.route("/stocks/dashboard", methods=["GET", "POST"])
 def stocks_dashboard():
     print("STOCKS DASHBOARD...")
 
-    # for data sent via POST request, form inputs are in request.form:
-    request_data = dict(request.form)
-    print("FORM DATA:", request_data)
+    if request.method == "POST":
+        # for data sent via POST request, form inputs are in request.form:
+        request_data = dict(request.form)
+        print("FORM DATA:", request_data)
+    else:
+        # for data sent via GET request, url params are in request.args
+        request_data = dict(request.args)
+        print("URL PARAMS:", request_data)
+
     symbol = request_data.get("symbol") or "NFLX"
 
     try:
