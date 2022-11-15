@@ -37,7 +37,10 @@
         var data = [series]
         var layout = {
             title: "Daily Closing Prices for Stock: " + symbol,
-            height: 600
+            height: 600,
+            yaxis: {
+                tickformat: '$' // https://plotly.com/javascript/tick-formatting/
+            }
         }
         Plotly.newPlot("chart-container", data, layout, {responsive: true})
 
