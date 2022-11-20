@@ -16,7 +16,6 @@ def test_usd_formatting():
     #assert format_usd("OOPS") == "______"
 
 
-
 def test_data_fetching():
     result = fetch_stocks_data("NFLX")
     assert isinstance(result, DataFrame)
